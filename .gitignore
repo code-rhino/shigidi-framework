@@ -17,6 +17,8 @@
 
 target/*
 
+**/target/*
+
 *.iml
 
 # Generated files
