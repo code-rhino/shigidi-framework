@@ -1,9 +1,12 @@
 package com.shigidi.bot.core;
 
-import com.shigidi.bot.core.camera.RobotCamera;
-import com.shigidi.bot.core.motors.MotorMapping;
+import com.shigidi.bot.core.camera.annotations.CameraMapping;
+import com.shigidi.bot.core.motors.annotations.MotorMapping;
 import com.shigidi.bot.core.robot.Robot;
-import com.shigidi.bot.core.motors.MotorDependencyInjector;
+import com.shigidi.bot.core.motors.MotorDI;
+import com.shigidi.bot.core.camera.CameraDependencyInjector;
+import com.shigidi.bot.core.server.HttpStreamServerDI;
+import com.shigidi.bot.core.server.HttpStreamServerImpl;
 import org.opencv.core.Core;
 
 import java.lang.reflect.Constructor;
@@ -15,9 +18,8 @@ public class RobotRunner {
     public static void initialize(Class<?> clazz) {
         System.out.println("Run robot initialize " + clazz.getTypeName());
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        RobotCamera.start();
+        //RobotCamera.start();
         try {
-            System.out.println("test");
             for (Method method : clazz.getDeclaredMethods()) {
                 System.out.println(method.getName());
             }
@@ -27,7 +29,10 @@ public class RobotRunner {
                 if ( 0 == paramTypes.length){
                     Object[] convertedArgs = new Object[0];
                     object = ctor.newInstance(convertedArgs);
-                    MotorDependencyInjector.inject(object, MotorMapping.class);
+                    MotorDI.inject(object, MotorMapping.class);
+                    CameraDependencyInjector.inject(object, CameraMapping.class);
+                    HttpStreamServerImpl server = HttpStreamServerDI.inject(object);
+                    new Thread(server).start();
                     Robot robot = (Robot) object;
                     robot.run();
                 }
@@ -38,5 +43,7 @@ public class RobotRunner {
 
     }
 
-    //private void
+    private void injectMotors(){
+
+    }
 }

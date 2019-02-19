@@ -1,5 +1,7 @@
 package com.shigidi.bot.core.motors;
 
+import com.shigidi.bot.core.motors.interfaces.Motor;
+
 public class MotorImpl implements Motor {
     private MotorSlot slot;
     private int powerLevel;
