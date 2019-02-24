@@ -7,8 +7,9 @@ java -Djava.library.path=/home/pi/opencv/build/lib -cp .:/home/pi/opencv/build/b
 ```
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.highgui.Highgui;
-import org.opencv.highgui.VideoCapture;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.videoio.VideoCapture;
+
  
 public class Webcam {
  
@@ -34,7 +35,7 @@ public class Webcam {
  
         Mat frame = new Mat();
         camera.read(frame);
-        Highgui.imwrite("capture.jpg", frame);
+        //Highgui.imwrite("capture.jpg", frame);
     }
 }
 ```
