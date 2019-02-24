@@ -79,6 +79,7 @@ public class HttpStreamServerImpl implements HttpStreamServer, Runnable{
             }
         } catch (IOException e) {
             System.out.println("Error");
+            e.printStackTrace();
             return;
         }
 
