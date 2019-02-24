@@ -27,7 +27,7 @@ public class HttpStreamServerImpl implements HttpStreamServer, Runnable{
 
     public void startStreamingServer() throws IOException {
         System.out.println("Starting Streaming server");
-        serverSocket = new ServerSocket(8080);
+        serverSocket = new ServerSocket(80);
         socket = serverSocket.accept();
         writeHeader(socket.getOutputStream(), boundary);
     }
