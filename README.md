@@ -4,6 +4,8 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE -D WITH_OPENCL=OFF -D BUILD_PERF_TESTS=OFF -D 
 
 java -Djava.library.path=/home/pi/opencv/build/lib -cp .:/home/pi/opencv/build/bin/opencv-401.jar Test
 
+```
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
@@ -35,3 +37,5 @@ public class Webcam {
         Highgui.imwrite("capture.jpg", frame);
     }
 }
+```
+
