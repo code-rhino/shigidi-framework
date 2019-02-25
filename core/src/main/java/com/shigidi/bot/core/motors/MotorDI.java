@@ -21,7 +21,7 @@ public class MotorDI {
                 MotorMapping motorMapping = (MotorMapping) field.getAnnotation(annotation);
                 field.setAccessible(true); // should work on private fields
                 try {
-                    Motor motor = assignMotor(motorMapping.motorSlot());
+                    Motor motor = assignMotor(motorMapping.motorSlot(), thunderborg);
                     field.set(instance, motor);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -44,8 +44,8 @@ public class MotorDI {
         }
         return null;
     }
-    private static Motor assignMotor(MotorSlot slotIn){
-        return new MotorImpl(slotIn);
+    private static Motor assignMotor(MotorSlot slotIn, I2CDevice board){
+        return new MotorImpl(slotIn, board);
     }
 
 
