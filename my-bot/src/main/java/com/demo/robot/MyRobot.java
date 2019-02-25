@@ -44,7 +44,7 @@ public class MyRobot implements Robot {
     @Override
     public void run() {
         try {
-            camera.getFrame();
+            //camera.getFrame();
             motorA.setMotorPower(10);
             Thread.sleep(10l);
             motorB.setMotorPower(10);
@@ -65,9 +65,9 @@ public class MyRobot implements Robot {
                 httpStreamServer.updateImage(frame);
 
             }*/
-        } catch (CameraException ex){
+        } /*catch (CameraException ex){
             ex.printStackTrace();
-        }catch (InterruptedException ex){
+        }*/catch (InterruptedException ex){
 
         }
 
