@@ -46,11 +46,13 @@ public class MyRobot implements Robot {
         try {
             camera.getFrame();
             motorA.setMotorPower(10);
-            motorB.setMotorPower(-10);
-            System.out.println(motorA.getMotorSlot() + "  " + motorA.getMotorPower());
-            System.out.println(motorB.getMotorSlot() + "  " + motorB.getMotorPower());
-            motorB.setMotorPower(8);
-            System.out.println(motorB.getMotorSlot() + "  " + motorB.getMotorPower());
+            Thread.sleep(2000l);
+            motorA.setMotorPower(0);
+            //motorB.setMotorPower(-10);
+            //System.out.println(motorA.getMotorSlot() + "  " + motorA.getMotorPower());
+            //System.out.println(motorB.getMotorSlot() + "  " + motorB.getMotorPower());
+            //motorB.setMotorPower(8);
+            //System.out.println(motorB.getMotorSlot() + "  " + motorB.getMotorPower());
             while(true){
                 Mat frame = camera.getFrame();
                 Point point1 = new Point(0.0, 0.0);
@@ -60,6 +62,8 @@ public class MyRobot implements Robot {
             }
         } catch (CameraException ex){
             ex.printStackTrace();
+        }catch (InterruptedException ex){
+
         }
 
     }
