@@ -46,20 +46,25 @@ public class MyRobot implements Robot {
         try {
             camera.getFrame();
             motorA.setMotorPower(10);
+            Thread.sleep(10l);
+            motorB.setMotorPower(10);
             Thread.sleep(2000l);
             motorA.setMotorPower(0);
+            Thread.sleep(10l);
+            motorB.setMotorPower(0);
             //motorB.setMotorPower(-10);
             //System.out.println(motorA.getMotorSlot() + "  " + motorA.getMotorPower());
             //System.out.println(motorB.getMotorSlot() + "  " + motorB.getMotorPower());
             //motorB.setMotorPower(8);
             //System.out.println(motorB.getMotorSlot() + "  " + motorB.getMotorPower());
-            while(true){
+            /*while(true){
                 Mat frame = camera.getFrame();
                 Point point1 = new Point(0.0, 0.0);
                 Point point2 = new Point(200, 200);
                 Imgproc.rectangle(frame,point1, point2,new Scalar(0, 255, 0, 255), 3);
                 httpStreamServer.updateImage(frame);
-            }
+
+            }*/
         } catch (CameraException ex){
             ex.printStackTrace();
         }catch (InterruptedException ex){

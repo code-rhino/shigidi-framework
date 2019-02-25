@@ -30,9 +30,9 @@ public class RobotRunner {
                     Object[] convertedArgs = new Object[0];
                     object = ctor.newInstance(convertedArgs);
                     MotorDI.inject(object, MotorMapping.class);
-                    CameraDependencyInjector.inject(object, CameraMapping.class);
-                    HttpStreamServerImpl server = HttpStreamServerDI.inject(object);
-                    new Thread(server).start();
+                    //CameraDependencyInjector.inject(object, CameraMapping.class);
+                    //HttpStreamServerImpl server = HttpStreamServerDI.inject(object);
+                    //new Thread(server).start();
                     Robot robot = (Robot) object;
                     robot.run();
                 }
