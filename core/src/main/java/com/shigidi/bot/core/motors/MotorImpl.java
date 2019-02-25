@@ -20,7 +20,7 @@ public class MotorImpl implements Motor {
     public void setMotorPower(int powerLevel) {
         System.out.println("This is motor " + slot.name());
         if(thunderborg != null){
-            if(slot.name().equals(MotorSlot.A))
+            if(slot.equals(MotorSlot.A))
                 writeToBoard(Constants.COMMAND_SET_A_FWD, powerLevel);
             else
                 writeToBoard(Constants.COMMAND_SET_B_FWD, powerLevel);
